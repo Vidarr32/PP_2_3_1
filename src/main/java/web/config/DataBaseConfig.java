@@ -48,11 +48,6 @@ public class DataBaseConfig {
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPackagesToScan(new String[]{"web.model"});
 
-//        Properties props = new Properties();
-//        props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-//        props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-//        props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setJpaProperties(additionalProperties());
@@ -65,12 +60,6 @@ public class DataBaseConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
-//    @Bean
-//    public HibernateTransactionManager getTransactionManager() {
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(entityManagerFactory().getObject());
-//        return transactionManager;
-//    }
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
